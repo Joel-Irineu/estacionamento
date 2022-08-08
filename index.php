@@ -1,11 +1,24 @@
 <?php
     $pdo = new PDO('mysql:host=localhost;dbname=parking', 'root', '');
+
+    //insert
+    if(isset($_POST['client'])){
+        $sql = $pdo->prepare("INSERT INTO parked VALUES (NULL,?,?,?,?,?,?)");
+
+        date_default_timezone_set('America/Sao_Paulo');
+        $dateTime = date('y-m-d h:i:s a', time());
+
+        $sql->execute(array($_POST['client'],$_POST['modelCar'],$_POST['licensePlate'],$dateTime,$dateTime, 0.00));
+        echo '<script>alert("inserido com sucesso!")</script>';
+    }
+
+    
 ?>
 
 <form action="" method="post"> 
-    <input type="text" name="name" id="name">
-    <input type="text" name="modelCar" id="modelCar">
-    <input type="text" name="licensePlate" id="licensePlate">
+    <input type="text" placeholder="Nome do cliente" name="client" id="client">
+    <input type="text" placeholder="Modelo do carro" name="modelCar" id="modelCar">
+    <input type="text" placeholder="Placa do carro" name="licensePlate" id="licensePlate">
     <input type="submit" value="enviar">
 </form>
 
@@ -34,8 +47,13 @@
         print   '<td>'.$parked['modelCar'].'</td>';
         print   '<td>'.$parked['licensePlate'].'</td>';
         print   '<td>'.$parked['timeStart'].'</td>';
-        print   '<td>'.$parked['timeEnd'].'</td>';
-        print   '<td>'.$parked['price'].'</td>';
+        if($parked['timeEnd'] == $parked['timeStart']){
+            print '<td>Em utilização</td>';
+            print '<td>Não Finalizado</td>';
+        }else{
+            print   '<td>'.$parked['timeEnd'].'</td>';
+            print   '<td>'.$parked['price'].'</td>';
+        }
         print   '<td><a href="#"> editar </a></td>';
         print   '<td><a href="#"> Finalizar </a></td>';
         print'<tr>';
