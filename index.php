@@ -3,12 +3,12 @@
 
     //insert
     if(isset($_POST['client'])){
-        $sql = $pdo->prepare("INSERT INTO parked VALUES (NULL,?,?,?,?,?,?)");
+        $sql = $pdo->prepare("INSERT INTO parked (id, client, modelCar, licensePlate, timeStart) VALUES (NULL,?,?,?,?)");
 
         date_default_timezone_set('America/Sao_Paulo');
         $dateTime = date('y-m-d h:i:s a', time());
 
-        $sql->execute(array($_POST['client'],$_POST['modelCar'],$_POST['licensePlate'],$dateTime,$dateTime, 0.00));
+        $sql->execute(array($_POST['client'],$_POST['modelCar'],$_POST['licensePlate'],$dateTime));
         echo '<script>alert("inserido com sucesso!")</script>';
     }
 
@@ -54,8 +54,8 @@
             print   '<td>'.$parked['timeEnd'].'</td>';
             print   '<td>'.$parked['price'].'</td>';
         }
-        print   '<td><a href="#"> editar </a></td>';
-        print   '<td><a href="#"> Finalizar </a></td>';
+        print   '<td><a href="edit/?id='.$parked['id'].'"> editar </a></td>';
+        print   '<td><a href="end/?id='.$parked['id'].'"> Finalizar </a></td>';
         print'<tr>';
     }
 ?>
