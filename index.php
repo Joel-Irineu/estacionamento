@@ -47,7 +47,7 @@
         print   '<td>'.$parked['modelCar'].'</td>';
         print   '<td>'.$parked['licensePlate'].'</td>';
         print   '<td>'.$parked['timeStart'].'</td>';
-        if($parked['timeEnd'] == $parked['timeStart']){
+        if($parked['timeEnd'] == ''){
             print '<td>Em utilização</td>';
             print '<td>Não Finalizado</td>';
         }else{
