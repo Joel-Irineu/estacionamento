@@ -23,7 +23,7 @@
 </form>
 
 <?php
-    $sql = $pdo->prepare("SELECT * FROM parked");
+    $sql = $pdo->prepare("SELECT * FROM parked ORDER BY id DESC");
     $sql->execute();
 
     $fetchParked = $sql->fetchAll();
