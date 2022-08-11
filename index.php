@@ -37,7 +37,7 @@
             <th>Entrada</th>
             <th>Saida</th>
             <th>Preço</th>
-            <th colspan="2">Ações</th>
+            <th colspan="3">Ações</th>
         </tr>
 <?php
     foreach($fetchParked as $key => $parked){
@@ -56,6 +56,11 @@
         }
         print   '<td><a href="edit/?id='.$parked['id'].'&client='.$parked['client'].'&modelCar='.$parked['modelCar'].'&licensePlate='.$parked['licensePlate'].'"> editar </a></td>';
         print   '<td><a href="end/?id='.$parked['id'].'"> Finalizar </a></td>';
+        if($parked['timeEnd'] == ''){
+            print   '<td style="color: #787878">Comprovante</td>';
+        }else{
+            print   '<td><a href="print/?id='.$parked['id'].'" target="_blank"> Comprovante </a></td>';
+        }
         print'<tr>';
     }
 ?>
