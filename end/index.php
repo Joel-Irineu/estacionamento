@@ -20,7 +20,13 @@
 
         $timeDif = $timeStart->diff($timeEnd);
 
-        $time = $timeDif->format('%h');
+        if($timeDif->format('%h') <= 0 && $timeDif->format('%d') <= 0 && $timeDif->format('%h') > 20){
+            $time = 1;
+        }else{
+            $time = $timeDif->format('%h');
+        }
+
+        
 
         $price = $time * 3.5;
 
