@@ -27,6 +27,7 @@
     $sql->execute();
 
     $fetchParked = $sql->fetchAll();
+    $test = 'oia';
 ?>
     <table border='1'>
         <tr>
@@ -55,7 +56,12 @@
             print   '<td> R$'.$parked['price'].'</td>';
         }
         print   '<td><a href="edit/?id='.$parked['id'].'&client='.$parked['client'].'&modelCar='.$parked['modelCar'].'&licensePlate='.$parked['licensePlate'].'"> editar </a></td>';
-        print   '<td><a href="end/?id='.$parked['id'].'"> Finalizar </a></td>';
+        
+        if($parked['timeEnd'] == ''){
+            print   '<td><a href="end/?id='.$parked['id'].'"> Finalizar </a></td>';
+        }else{
+            print   '<td style="color: #787878">Finalizar</td>';
+        }
         if($parked['timeEnd'] == ''){
             print   '<td style="color: #787878">Comprovante</td>';
         }else{

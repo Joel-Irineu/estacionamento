@@ -20,7 +20,7 @@
 
         $timeDif = $timeStart->diff($timeEnd);
 
-        if($timeDif->format('%h') <= 0 && $timeDif->format('%d') <= 0 && $timeDif->format('%h') > 20){
+        if($timeDif->format('%h') <= 0 && $timeDif->format('%d') <= 0 && $timeDif->format('%i') >= 20){
             $time = 1;
         }else{
             $time = $timeDif->format('%h');
