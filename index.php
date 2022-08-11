@@ -52,7 +52,7 @@
             print '<td>Não Finalizado</td>';
         }else{
             print   '<td>'.$parked['timeEnd'].'</td>';
-            print   '<td>'.$parked['price'].'</td>';
+            print   '<td> R$'.$parked['price'].'</td>';
         }
         print   '<td><a href="edit/?id='.$parked['id'].'&client='.$parked['client'].'&modelCar='.$parked['modelCar'].'&licensePlate='.$parked['licensePlate'].'"> editar </a></td>';
         print   '<td><a href="end/?id='.$parked['id'].'"> Finalizar </a></td>';
